@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="132" height="31" viewBox="0 0 132 31">
+  <defs>
+    <style>
+      .cls-1 {
+        font-size: 91.246px;
+        fill: #21303e;
+        font-family: Avenir;
+      }
+
+      .cls-2 {
+        fill: #77a8ab;
+      }
+    </style>
+  </defs>
+  <text id="teen_" data-name="teen+" class="cls-1" transform="translate(0.375 30.065) scale(0.548)">teen<tspan class="cls-2">+</tspan></text>
+</svg>

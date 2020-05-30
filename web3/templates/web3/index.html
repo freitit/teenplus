@@ -1,0 +1,144 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="{% static 'css/all.css' %}">
+  <script defer src="{% static 'js/all.js' %}"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
+    function increaseAction() {
+      var xmlhttp = new XMLHttpRequest();
+      xmlhttp.onreadystatechange = function () { };
+      xmlhttp.open("GET", "{% url 'increaseActionNumber' %}", true);
+      xmlhttp.send();
+    }
+
+    function getAction() {
+      var xmlhttp = new XMLHttpRequest();
+      xmlhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+          document.getElementById("actionnumm").innerHTML = this.responseText;
+        }
+      };
+      xmlhttp.open("GET", "{% url 'getActionNumber' %}", true);
+      xmlhttp.send();
+    }
+    
+    // //Đặt thời gian refresh nội dung cho <span class="action-number"/> là 500ms 
+    setInterval(getAction, 500);
+  </script>
+  <meta charset="utf-8">
+  <title>Trang chủ</title>
+</head>
+
+<body>
+  <div>
+    <div id="banner" class="container-fluid shadow-sm  bg-white">
+      <div class="row align-items-center h-100">
+        <div class="col-sm-3">
+          <img src="{% static 'img/logo.svg' %}" id="logo-banner" alt="Teen+ ">
+        </div>
+        <div class="col-sm-6">
+          <div class="input-group md-form form-sm active">
+            <input class="form-control " type="text" placeholder="Tìm kiếm" aria-label="Search">
+            <div class="input-group-append">
+              <span class="input-group-text" id="search-button">
+                <i class="fas fa-search" aria-hidden="true"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="profile-box float-right">
+            <img src="{% static 'img/avatar1.jpg' %}" class="rounded-circle profile-img">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="row">
+            <div class="col-sm-6">
+            </div>
+            <ul class="topic col-sm-6">
+              <li><a href="">Trang chủ</a></li>
+              <li><a href="">ABCXYZ</a></li>
+              <li><a href="">Sức khoẻ</a></li>
+              <li><a href="">Gia đình</a></li>
+              <li><a href="">Du lịch</a></li>
+              <li><a href="">Lịch sử</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-sm-6 post-list">
+          <div class="post-container shadow-sm bg-white">
+            <button type="button" class="btn btn-default btn-sm close-button"><i class="fas fa-times"
+                aria-hidden="true"></i></button>
+            <div class="post-info">
+              <span>
+                <img src="{% static 'img/avatar2.jpg' %}" class="rounded-circle profile-img">
+              </span>
+              <span class="user">
+                Đô Nần Trâm
+              </span>
+              <span class="activity">
+                đã đăng bài trong
+              </span>
+              <span class="post-topic">
+                ABCXYZ
+              </span>
+            </div>
+            <div class="post-content">
+              <img src="{% static 'img/img1.jpg' %}">
+              <h1 class="post-title">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean non varius justo.
+                Integer ultrices ante.</h1>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc posuere gravida lorem, egestas blandit ex
+                cursus interdum. Vestibulum feugiat diam non bibendum pharetra. Morbi nulla augue, condimentum a nulla
+                sed, finibus placerat metus. Donec vestibulum erat id felis interdum, eget pharetra nibh condimentum.
+                Donec fermentum nunc sed diam placerat fermentum.
+              </p>
+            </div>
+
+            <div class="post-action">
+              <ul>
+                <span class="action-item">
+                  <!--Thêm vào event onclick-->
+                  <i class="fas fa-heart" aria-hidden="true" onclick="increaseAction()"></i>
+
+                  <!--Chỗ ni dùng javascript để hiển thị lượt like luôn, nên t comment code gốc-->
+                  <span id="actionnumm">{{likenumber}}</span>
+                  <!-- <span class="action-number">
+                  32 &nbsp;
+                </span> -->
+                </span>
+                <span class="action-item">
+                  <i class="far fa-comment-alt" aria-hidden="true"></i>
+                  <span class="action-number">
+                    15
+                  </span>
+                </span>
+
+              </ul>
+
+            </div>
+          </div>
+
+          <div class="post-container shadow-sm bg-white">
+
+            <i class="fas fa-times close-button" aria-hidden="true"></i>
+          </div>
+        </div>
+        <div class="col-sm-3">
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
