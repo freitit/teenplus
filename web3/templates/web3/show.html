@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>post Records</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/all.css' %}">
+</head>
+
+<body>
+    <table class="table table-striped table-bordered table-sm">
+        <thead class="thead-dark">
+            <tr>
+                <th>Entity Id</th>
+                <th>Title</th>
+                <th>Content</th>
+                <th>User_id</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for post in posts %}
+            <tr>
+                <td>{{ post.entity_id }}</td>
+                <td>{{ post.title }}</td>
+                <td>{{ post.content }}</td>
+                <td>{{ post.user_id }}</td>
+                <td>
+                    <a href="/web3/editPost/{{ post.entity_id }}"><span class="glyphicon glyphicon-pencil">Edit</span></a>
+                    <a href="/web3/removePost/{{ post.entity_id }}">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <br>
+    <br>
+    <center><a href="/web3/addPost" class="btn btn-primary">Add New Record</a></center>
+</body>
+
+</html>

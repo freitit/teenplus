@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/all.css' %}">
+    <script>
+        
+    </script>
+</head>
+
+<body>
+    <form enctype="multipart/form-data" method="POST" class="post-form" action="/web3/addPost">
+        {% csrf_token %}
+        <div class="container">
+            <br>
+            <div class="form-group row">
+                <label class="col-sm-1 col-form-label"></label>
+                <div class="col-sm-4">
+                    <h3>Enter Details</h3>
+                </div>
+            </div>
+            <div class="form-group row" hidden>
+                <label class="col-sm-2 col-form-label">Post Id:</label>
+                <div class="col-sm-4">
+                    {{ form.entity_id }}
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Post Title:</label>
+                <div class="col-sm-4">
+                    {{ form.title }}
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Post Content:</label>
+                <div class="col-sm-4">
+                    {{ form.content }}
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Post Image:</label>
+                <div class="col-sm-4">
+                    {{ form.image }}
+                </div>
+            </div>
+            <div class="form-group row" hidden>
+                <label class="col-sm-2 col-form-label">Post Created Date:</label>
+                <div class="col-sm-4">
+                    {{ form.created_date }}
+                </div>
+            </div>
+            <div class="form-group row" hidden>
+                <label class="col-sm-2 col-form-label">Post User_id:</label>
+                <div class="col-sm-4">
+                    {{ form.user_id }}
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Post theme:</label>
+                <div class="col-sm-4">
+                    {{ form.theme }}
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-1 col-form-label"></label>
+                <div class="col-sm-4">
+                    <button type="submit" class="btn btn-primary" onclick="submitfill()">Submit</button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script>
+        var d = new Date();
+        str_date = ''+d.getFullYear()+'-'+parseInt(parseInt(d.getMonth())+1)+'-'+d.getDate();
+        document.getElementById("id_user_id").setAttribute("value", '{{ userid }}');
+        document.getElementById("id_created_date").setAttribute("value", str_date);
+        
+        
+    </script>
+</body>
+
+</html>

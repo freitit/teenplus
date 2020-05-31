@@ -9,28 +9,7 @@
   <link rel="stylesheet" href="{% static 'css/all.css' %}">
   <script defer src="{% static 'js/all.js' %}"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script>
-    function increaseAction() {
-      var xmlhttp = new XMLHttpRequest();
-      xmlhttp.onreadystatechange = function () { };
-      xmlhttp.open("GET", "{% url 'increaseActionNumber' %}", true);
-      xmlhttp.send();
-    }
-
-    function getAction() {
-      var xmlhttp = new XMLHttpRequest();
-      xmlhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-          document.getElementById("actionnumm").innerHTML = this.responseText;
-        }
-      };
-      xmlhttp.open("GET", "{% url 'getActionNumber' %}", true);
-      xmlhttp.send();
-    }
-    
-    // //Đặt thời gian refresh nội dung cho <span class="action-number"/> là 500ms 
-    setInterval(getAction, 500);
-  </script>
+  <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
   <meta charset="utf-8">
   <title>Trang chủ</title>
 </head>
@@ -54,7 +33,11 @@
         </div>
         <div class="col-sm-3">
           <div class="profile-box float-right">
+            <a href="{% url 'addpost' %}" class="btn btn-success">Đăng bài</a>
             <img src="{% static 'img/avatar1.jpg' %}" class="rounded-circle profile-img">
+            <a class="user" href="/web3/profile">
+              {{ username }}
+            </a>
           </div>
         </div>
       </div>
@@ -114,8 +97,58 @@
                   <!--Chỗ ni dùng javascript để hiển thị lượt like luôn, nên t comment code gốc-->
                   <span id="actionnumm">{{likenumber}}</span>
                   <!-- <span class="action-number">
-                  32 &nbsp;
-                </span> -->
+                32 &nbsp;
+              </span> -->
+                </span>
+                <span class="action-item">
+                  <i class="far fa-comment-alt" aria-hidden="true"></i>
+                  <span class="action-number">
+                    15
+                  </span>
+                </span>
+
+              </ul>
+
+            </div>
+
+          </div>
+          {% for title, content, image in a_post %}
+          <div class="post-container shadow-sm bg-white">
+            <button type="button" class="btn btn-default btn-sm close-button"><i class="fas fa-times"
+                aria-hidden="true"></i></button>
+            <div class="post-info">
+              <span>
+                <img src="{% static 'img/avatar2.jpg' %}" class="rounded-circle profile-img">
+              </span>
+              <span class="user">
+                Đô Nần Trâm
+              </span>
+              <span class="activity">
+                đã đăng bài trong
+              </span>
+              <span class="post-topic">
+                ABCXYZ
+              </span>
+            </div>
+            <div class="post-content">
+              <img src="{{image}}">
+              <h1 class="post-title">{{title}}</h1>
+              <p>
+                {{content}}
+              </p>
+            </div>
+
+            <div class="post-action">
+              <ul>
+                <span class="action-item">
+                  <!--Thêm vào event onclick-->
+                  <i class="fas fa-heart" aria-hidden="true" onclick="increaseAction()"></i>
+
+                  <!--Chỗ ni dùng javascript để hiển thị lượt like luôn, nên t comment code gốc-->
+                  <span id="actionnumm">{{likenumber}}</span>
+                  <!-- <span class="action-number">
+                    32 &nbsp;
+                  </span> -->
                 </span>
                 <span class="action-item">
                   <i class="far fa-comment-alt" aria-hidden="true"></i>
@@ -128,6 +161,7 @@
 
             </div>
           </div>
+          {% endfor %}
 
           <div class="post-container shadow-sm bg-white">
 

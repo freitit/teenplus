@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Login{% endblock %}
+{% block style %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/login_style.css' %}">
+<link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/a81368914c.js"></script>
+{% endblock %}
+
+{% block content %}
+<img class="wave" src="{% static 'img/login_wave.png' %}">
+<div class="container">
+    <div class="img">
+        <img src="{% static 'img/login_bg.svg' %}">
+    </div>
+    <div class="login-content">
+        <form method='POST'>
+            {% csrf_token %}
+            <img src="{% static 'img/login_avatar.svg' %}">
+            <h2 class="title">Xin chào</h2>
+            {% if form.errors %}
+            <p style="color:crimson;">Tên đăng nhập hoặc Mật khẩu nhập không đúng. Xin thử lại.</p>
+            {% endif %}
+            <div class="input-div one">
+                <div class="i">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="div">
+                    {{ form.username }}
+                </div>
+            </div>
+            <div class="input-div pass">
+                <div class="i">
+                    <i class="fas fa-lock"></i>
+                </div>
+                <div class="div">
+                    {{ form.password }}
+                </div>
+            </div>
+            <a href="#">Bạn quên mật khẩu?</a>
+            <a href="#">Chưa có tài khoản? Đăng ký ngay!</a>
+            <input type="submit" class="btn" value="Đăng nhập">
+        </form>
+    </div>
+</div>
+<script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+{% endblock %}

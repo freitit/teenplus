@@ -11,17 +11,17 @@ from django.db import models
 #     def likeenum(self):
 #         return str(self.likee)
 
-class Login(models.Model):
-    username = models.CharField(max_length=100)
-    password = models.CharField(max_length=200)
+# class Login(models.Model):
+#     username = models.CharField(max_length=100)
+#     password = models.CharField(max_length=200)
 
-class User(models.Model):
-    name = models.CharField(max_length=200)
-    birthday = models.DateField()
-    email = models.EmailField()
-    joinedday = models.DateField()
-    nationality = models.CharField(max_length=50)
+# class User(models.Model):
+#     name = models.CharField(max_length=200)
+#     birthday = models.DateField()
+#     email = models.EmailField()
+#     joinedday = models.DateField()
+#     nationality = models.CharField(max_length=50)
 
-class Health(models.Model):
+# class Health(models.Model):
     
 

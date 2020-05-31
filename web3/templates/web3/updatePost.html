@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+</head>
+
+<body>
+    <form method="POST" class="post-form" action="/web3/updatePost/{{post.entity_id}}">
+        {% csrf_token %}
+        <div class="container">
+            <br>
+            <div class="form-group row">
+                <label class="col-sm-1 col-form-label"></label>
+                <div class="col-sm-4">
+                    <h3>Update Details</h3>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">post Id:</label>
+                <div class="col-sm-4">
+                    <input type="text" name="entity_id" id="id_entity_id" required maxlength="20"
+                        value="{{ post.entity_id }}" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">post title:</label>
+                <div class="col-sm-4">
+                    <input type="text" name="title" id="id_title" required maxlength="100" value="{{ post.title }}" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">post content:</label>
+                <div class="col-sm-4">
+                    <input type="text" name="content" id="id_content" required maxlength="254"
+                        value="{{ post.content }}" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">post user_id:</label>
+                <div class="col-sm-4">
+                    <input type="text" name="user_id" id="id_user_id" required maxlength="15"
+                        value="{{ post.user_id }}" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">post theme:</label>
+                <div class="col-sm-4">
+                    <input type="text" name="theme" id="id_theme" required maxlength="15"
+                        value="{{ post.theme }}" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">post image:</label>
+                <div class="col-sm-4">
+                    <input type="text" name="image" id="id_image" required maxlength="15"
+                        value="{{ post.image }}" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">post created_date:</label>
+                <div class="col-sm-4">
+                    <input type="text" name="created_date" id="id_created_date" required maxlength="15"
+                        value="{{ post.created_date }}" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-1 col-form-label"></label>
+                <div class="col-sm-4">
+                    <button type="submit" class="btn btn-success">Update</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+
+</html>
